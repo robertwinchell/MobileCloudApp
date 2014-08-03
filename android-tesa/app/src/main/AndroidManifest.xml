@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.intellio.tesa"
+    android:versionCode="102"
+    android:versionName="1.1" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <application
+        android:name=".TesaApplication"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Bootstrap.Dark">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+
+        <service
+            android:name=".authenticator.AccountAuthenticatorService"
+            android:process=":auth" >
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <activity
+            android:name=".authenticator.AuthenticatorActivity"
+            android:excludeFromRecents="true" android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"></action>
+                  <category android:name="android.intent.category.DEFAULT"></category>
+
+                <data
+                android:host="signin"
+                android:scheme="tesa" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".authenticator.SignupActivity"
+            android:excludeFromRecents="true" android:launchMode="singleTask" >
+<intent-filter>
+    <action android:name="android.intent.action.VIEW"></action>
+        <category android:name="android.intent.category.DEFAULT"></category>
+
+    <data
+                               android:host="signup"
+                              android:scheme="tesa" />
+</intent-filter>
+        </activity>
+        <activity android:name=".ui.ProductActivity" />
+        <activity android:name=".ui.UserActivity" android:label="@string/app_name" />
+        <activity android:name=".ui.Picture_Selection" android:label="@string/app_name" />
+        <activity
+            android:name=".ui.ImagePagerActivity"
+            android:label="@string/app_name" />
+    </application>
+
+</manifest>
