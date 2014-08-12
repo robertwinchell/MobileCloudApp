@@ -1,5 +1,6 @@
 package com.intellio.tesa.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,5 +15,10 @@ public class DateUtils {
                 String temp = sdf.format(date);
                 return temp;
             }
+    public static Date fromShortDateString(String input) throws ParseException {
+        String formatStr = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(formatStr);
+        return sdf.parse(input);
+    }
 
 }

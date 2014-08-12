@@ -12,10 +12,10 @@
     </item>
 
     <item
-        android:id="@+id/timer"
+        android:id="@+id/add_product"
         android:icon="@drawable/ic_action_timer"
         bootstrap:showAsAction="always"
-        android:title="@string/title_timer">
+        android:title="@string/add_product">
     </item>
 
     <item

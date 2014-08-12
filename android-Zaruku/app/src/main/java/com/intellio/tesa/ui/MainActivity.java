@@ -138,9 +138,14 @@ public class MainActivity extends BaseFragmentActivity {
             final FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new CarouselFragment())
-                    .commit();
+                    .commitAllowingStateLoss();
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void checkAuth() {
@@ -181,9 +186,6 @@ public class MainActivity extends BaseFragmentActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 //menuDrawer.toggleMenu();
-                return true;
-            case R.id.timer:
-                navigateToTimer();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

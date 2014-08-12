@@ -51,6 +51,19 @@
     <string name="no_products">No Products</string>
     <string name="error_loading_products">Loading products failed</string>
     <string name="title_add_scan">Add Scans</string>
+    <string name="add_product">Add Product</string>
+    <string name="label_name">Name</string>
+    <string name="label_purchase_date">Pruchase Date</string>
+    <string name="label_warranty_date">Warranty Date</string>
+    <string name="label_price">Price</string>
+    <string name="label_description">Description</string>
+    <string name="label_submit">Submit</string>
+    <string name="message_add_product_successful">Product added</string>
+    <string name="message_update_product_successful">Product updated</string>
+    <string name="title_update_product">Update</string>
+    <string name="title_delete_product">Delete</string>
+    <string name="message_add_product_failed">Adding Product failed</string>
+    <string name="message_update_product_failed">Updating product failed</string>
 
 
 </resources>

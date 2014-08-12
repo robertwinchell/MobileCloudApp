@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
@@ -20,7 +21,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import static com.intellio.tesa.core.Constants.Extra.NEWS_ITEM;
+import static com.intellio.tesa.core.Constants.Extra.PRODUCT_ITEM;
 
 public class ProductListFragment extends ItemListFragment<Product> {
 
@@ -89,6 +90,26 @@ public class ProductListFragment extends ItemListFragment<Product> {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.add_product){
+            startActivityForResult(new Intent(getActivity(),AddProductActivity.class),1001);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 1001){
+            if(data.getBooleanExtra("successful",false)){
+                forceRefresh();
+            }
+            return;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
     protected SingleTypeAdapter<Product> createAdapter(List<Product> items) {
         return new ProductListAdapter(getActivity().getLayoutInflater(), items);
     }
@@ -96,7 +117,7 @@ public class ProductListFragment extends ItemListFragment<Product> {
     public void onListItemClick(ListView l, View v, int position, long id) {
         Product news = ((Product) l.getItemAtPosition(position));
 
-        startActivity(new Intent(getActivity(), ProductActivity.class).putExtra(NEWS_ITEM, news));
+        startActivity(new Intent(getActivity(), ProductActivity.class).putExtra(PRODUCT_ITEM, news));
     }
 
     @Override

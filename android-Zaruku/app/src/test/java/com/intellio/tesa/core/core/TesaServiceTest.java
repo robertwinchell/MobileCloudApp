@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -61,42 +62,11 @@ public class TesaServiceTest {
         doReturn(true).when(request).ok();
     }
 
-    /**
-     * Verify getting users with an empty response
-     *
-     * @throws IOException
-     */
-    @Test
-    public void getUsersEmptyResponse() throws IOException {
-        doReturn(createReader("")).when(request).bufferedReader();
-        List<User> users = service.getUsers();
-        assertNotNull(users);
-        assertTrue(users.isEmpty());
-    }
 
-    /**
-     * Verify getting product with an empty response
-     *
-     * @throws IOException
-     */
     @Test
-    public void getContentEmptyResponse() throws IOException {
-        doReturn(createReader("")).when(request).bufferedReader();
-        List<News> content = service.getNews();
-        assertNotNull(content);
-        assertTrue(content.isEmpty());
-    }
+    public void addProduct() throws IOException {
+        boolean ret=service.addProduct("Test",new Date(),new Date(),120.12,"nothing");
 
-    /**
-     * Verify getting checkins with an empty response
-     *
-     * @throws IOException
-     */
-    @Test
-    public void getReferrersEmptyResponse() throws IOException {
-        doReturn(createReader("")).when(request).bufferedReader();
-        List<CheckIn> referrers = service.getCheckIns();
-        assertNotNull(referrers);
-        assertTrue(referrers.isEmpty());
+        assertTrue(ret);
     }
 }

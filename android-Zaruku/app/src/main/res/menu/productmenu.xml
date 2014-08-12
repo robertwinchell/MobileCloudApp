@@ -7,9 +7,23 @@
 
 
     <item
+        android:id="@+id/update_product"
+        android:icon="@drawable/ic_action_timer"
+
+        android:title="@string/title_update_product">
+    </item>
+
+    <item
+        android:id="@+id/delete_product"
+        android:icon="@drawable/ic_action_timer"
+
+        android:title="@string/title_delete_product">
+    </item>
+
+    <item
         android:id="@+id/add_scan"
         android:icon="@drawable/ic_action_timer"
-        bootstrap:showAsAction="always"
+
         android:title="@string/title_add_scan">
     </item>
 </menu>

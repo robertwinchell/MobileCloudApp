@@ -13,6 +13,7 @@ import com.intellio.tesa.core.PostFromAnyThreadBus;
 import com.intellio.tesa.core.RestAdapterRequestInterceptor;
 import com.intellio.tesa.core.RestErrorHandler;
 import com.intellio.tesa.core.UserAgentProvider;
+import com.intellio.tesa.ui.AddProductActivity;
 import com.intellio.tesa.ui.ImagePagerActivity;
 import com.intellio.tesa.ui.MainActivity;
 import com.intellio.tesa.ui.NavigationDrawerFragment;
@@ -47,7 +48,7 @@ import retrofit.converter.GsonConverter;
                 ProductListFragment.class,
                 NavigationDrawerFragment.class
                , ImagePagerActivity.class
-
+               , AddProductActivity.class
 
         }
 )

@@ -39,6 +39,8 @@ public final class Constants {
     public static final class Http {
 
 
+        public static final String URL_PRODUCTS_DELETE_FRAG = "/products/{name}.json";
+        public static final String URL_PRODUCTS_UPDATE_FRAG = "/products/{id}.json";
         private Http() {}
 
 
@@ -97,7 +99,7 @@ public final class Constants {
     public static final class Extra {
         private Extra() {}
 
-        public static final String NEWS_ITEM = "news_item";
+        public static final String PRODUCT_ITEM = "product_item";
 
         public static final String USER = "user";
         public static final String IMAGES = "com.intellio.tesa.imageloader.IMAGES";

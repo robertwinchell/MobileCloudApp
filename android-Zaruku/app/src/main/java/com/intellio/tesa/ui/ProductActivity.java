@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,7 @@ import java.util.Collections;
 
 import butterknife.InjectView;
 
-import static com.intellio.tesa.core.Constants.Extra.NEWS_ITEM;
+import static com.intellio.tesa.core.Constants.Extra.PRODUCT_ITEM;
 
 public class ProductActivity extends PictureSelectActivity {
 
@@ -47,11 +46,15 @@ public class ProductActivity extends PictureSelectActivity {
         setContentView(R.layout.product);
 
         if (getIntent() != null && getIntent().getExtras() != null) {
-            item = (Product) getIntent().getExtras().getSerializable(NEWS_ITEM);
+            item = (Product) getIntent().getExtras().getSerializable(PRODUCT_ITEM);
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        initView();
+
+    }
+    protected void initView(){
 
         setTitle(item.getTitle());
 
@@ -80,7 +83,6 @@ public class ProductActivity extends PictureSelectActivity {
             }
         });
     }
-
     /**
      * Open activities to show all images
      * */
@@ -103,9 +105,28 @@ public class ProductActivity extends PictureSelectActivity {
             SelectImage();
             return true;
         }
+        else if(item.getItemId() == R.id.update_product){
+            showUpdateActivity();
+        }
         return super.onOptionsItemSelected(item);
     }
 
+    private void showUpdateActivity() {
+        Intent intent=new Intent(this,AddProductActivity.class);
+        intent.putExtra(PRODUCT_ITEM,item);
+        startActivityForResult(intent,1001);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 1001){
+            if(data != null &&data.getBooleanExtra("successful",false)){
+                item=(Product) data.getSerializableExtra(PRODUCT_ITEM);
+                initView();
+            }
+            return;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
     @Override
     protected void onImageSelected(Uri uri) {
         ArrayList<String> list=new ArrayList<String>();
